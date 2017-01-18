@@ -18,7 +18,4 @@ python phishing_server.py
 ```
 And then go to http://127.0.0.1:5000/
 
-Requires [Flask](http://flask.pocoo.org/), which can be setup by running
-```
-pip install Flask
-```
+Prepackaged with bottle.
