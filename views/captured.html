@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Your details have been captured!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<h1>Your details have been captured!</h1>
+<h2>Form data</h2>
+<ul>
+% for key in req.forms:
+    <li><b>{{key}}:</b>{{req.forms[key]}}</li>
+% end
+</ul>
+<h2>Cookies</h2>
+<ul>
+% for key in req.cookies:
+    <li><b>{{key}}:</b>{{req.cookies[key]}}</li>
+% end
+</ul>
+<h2>Headers</h2>
+<ul>
+% for key in req.headers:
+    <li><b>{{key}}:</b>{{req.headers[key]}}</li>
+% end
+</ul>
+</body>
+</html>

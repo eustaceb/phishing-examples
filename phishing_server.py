@@ -1,37 +1,39 @@
-from flask import Flask, request, render_template, url_for
-
-app = Flask(__name__)
+from bottle import route, post, run, template, static_file, request
 
 ### Index
-@app.route("/")
+@route("/")
 def index():
     items = []
     items += [{"url":"/fakebook", "text":"Fakebook: previous tab"}]
     items += [{"url":"/autofill", "text":"Autofill example"}]
-    return render_template('index.html', items=items)
+    return template('index.html', items=items)
 
+### Static files
+@route('/static/<filename>')
+def server_static(filename):
+    return static_file(filename, root='./static')
 
 ### Autofill
-@app.route("/autofill")
+@route("/autofill")
 def autofill():
-    return render_template('autofill.html')
+    return template('autofill.html')
 
-@app.route("/capturepost", methods=["POST"])
+@post("/capturepost")
 def capture_post():
-    return render_template('captured.html', req=request)
+    return template('captured.html', req=request)
 
 ### Fakebook section
-@app.route("/fakebook")
+@route("/fakebook")
 def fakebook():
-    return render_template('fakebook.html', fb_background=url_for('static', filename='fb.png'))
+    return template('fakebook.html')
 
-@app.route("/bargain")
+@route("/bargain")
 def fakebook_404():
-    return render_template('fakebook404.html')
+    return template('fakebook404.html')
 
-@app.route("/fakebooklogin")
+@route("/fakebooklogin")
 def fakebook_login():
-    return render_template('fakebooklogin.html', fb_login = url_for('static', filename='fakebook_login.png'))
+    return template('fakebooklogin.html')
 
 if __name__ == "__main__":
-    app.run()
+    run(host='localhost', port=8080)
